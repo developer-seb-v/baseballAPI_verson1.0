@@ -11,6 +11,7 @@ namespace baseballAPI.Controllers
         [HttpGet]
         public List<Player> GetPlayers()
         {
+            // created join query to get foreign table data
             string connection = "server=localhost;user=root;database=baseball;port=3307;password=password123";
             MySqlConnection mySqlConnection = new MySqlConnection(connection);
             try
@@ -22,6 +23,12 @@ namespace baseballAPI.Controllers
                   MySqlDataReader reader = cmd.ExecuteReader();
                   while (reader.Read())
                   {
+                    // mapping the DB entities to C# class
+                    // The player model mirrors the DB entity
+                    // So just as DB entity has PlayerNumber, so does the class
+                    // and so on 
+                    // the columns are accessed as a 0-indexed array
+                    // 0=PlayerNumber, 1=FirstName, 2=LastName, 3=PositionId, 4=CountryId
                     Player P = new Player();
                     P.PlayerNumber = Convert.ToInt32(reader.GetValue(0));
                     P.FirstName = reader.GetValue(1).ToString();
@@ -40,7 +47,7 @@ namespace baseballAPI.Controllers
         }
 
         // http post
-
+        
 
         // http delete
     

@@ -48,3 +48,4 @@
 /home/seb/dev/APIs/baseballAPI/obj/Debug/net8.0/baseballAPI.pdb
 /home/seb/dev/APIs/baseballAPI/obj/Debug/net8.0/baseballAPI.genruntimeconfig.cache
 /home/seb/dev/APIs/baseballAPI/obj/Debug/net8.0/ref/baseballAPI.dll
+/home/seb/dev/APIs/baseballAPI/obj/Debug/net8.0/baseballAPI.sourcelink.json
