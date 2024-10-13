@@ -1,3 +1,4 @@
+using System.Windows.Markup;
 using baseballAPI.Models;
 using Microsoft.AspNetCore.Mvc;
 using MySql.Data.MySqlClient;
@@ -47,7 +48,30 @@ namespace baseballAPI.Controllers
         }
 
         // http post
-        
+        [HttpPost]
+        public void AddPlayer(string pnum, string fn, string ln, string posid, string cid)
+        {
+            string connection = "server=localhost;user=root;database=baseball_db;port=3308;password=password123";
+            MySqlConnection conn = new MySqlConnection(connection);
+
+
+            string query = $"INSERT INTO `player` " +
+            "(player_number, first_name, last_name, pos_id, country_id)" +
+            "VALUES (@num, @fn, @ln, @pos, @cid)";
+
+            MySqlCommand cmd = new MySqlCommand(query, conn);
+            cmd.Parameters.AddWithValue("@num", pnum);
+            cmd.Parameters.AddWithValue("@fn", fn);
+            cmd.Parameters.AddWithValue("@ln", ln);
+            cmd.Parameters.AddWithValue("@pos", posid);
+            cmd.Parameters.AddWithValue("@cid", cid);
+
+            cmd.Connection.Open();
+
+
+            cmd.ExecuteNonQuery();
+
+        }
 
         // http delete
     
