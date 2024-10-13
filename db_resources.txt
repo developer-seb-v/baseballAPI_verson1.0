@@ -1,5 +1,26 @@
 
 
+
+# create volume to persist data  
+docker volume create volume01
+
+# check that the volume is created
+docker volume ls
+
+# docker command to create a MySql container
+docker run \
+--name mysql-baseball \
+-e MYSQL_ROOT_PASSWORD=password123 \
+-p 3308:3306 \
+-v volume01:/var/lib/mysql \
+-d mysql 
+
+how to connect to mysql from mysqlsh 
+switch to sql mode: 
+\sql
+\c localhost -u root -P 3308
+
+
 player table
 +--------------+--------------+------+-----+---------+-------+
 | Field        | Type         | Null | Key | Default | Extra |
@@ -27,3 +48,63 @@ country table
 | CountryId   | int          | NO   | PRI | NULL    | auto_increment |
 | CountryName | varchar(255) | YES  |     | NULL    |                |
 +-------------+--------------+------+-----+---------+----------------+
+
+
+
+# create the database
+CREATE SCHEMA baseball_db;
+
+# switch to the database you just created
+USE baseball_db;
+
+# create the tables
+
+CREATE TABLE `position`(pos_id int, pos_name varchar(255));
+
+# add primary key for position table
+ALTER TABLE `position` ADD PRIMARY KEY (pos_id);
+
+CREATE TABLE `country` (country_id int, country_name varchar(255));
+
+ALTER TABLE `country` ADD PRIMARY KEY (country_id);
+
+# add auto increment constraint
+
+ALTER TABLE `country` AUTO_INCREMENT=1;
+
+CREATE TABLE `player` (player_number int, first_name varchar(255), last_name varchar(255));
+
+ALTER TABLE `player` ADD PRIMARY KEY (player_number);
+
+# add foreign key columns in the player table
+
+ALTER TABLE `player`  ADD pos_id int;
+
+ALTER TABLE `player` ADD FOREIGN KEY(pos_id) REFERENCES `position`(pos_id);
+
+ALTER TABLE `player` ADD country_id int;
+
+ALTER TABLE `player` ADD FOREIGN KEY(country_id) REFERENCES `country`(country_id);
+
+# Insert data into child tables. These would be position and country
+
+INSERT INTO `position` (pos_id, pos_name) VALUES (1, 'pitcher');
+INSERT INTO `position` (pos_id, pos_name) VALUES (2, 'catcher');
+INSERT INTO `position` (pos_id, pos_name) VALUES (3, 'first base');
+INSERT INTO `position` (pos_id, pos_name) VALUES (4, 'second base');
+INSERT INTO `position` (pos_id, pos_name) VALUES (5, 'third base');
+INSERT INTO `position` (pos_id, pos_name) VALUES (6, 'short stop');
+INSERT INTO `position` (pos_id, pos_name) VALUES (7, 'left field');
+INSERT INTO `position` (pos_id, pos_name) VALUES (8, 'center field');
+INSERT INTO `position` (pos_id, pos_name) VALUES (9, 'right field');
+
+INSERT INTO `country` (country_id, country_name) VALUES (1, 'Japan');
+INSERT INTO `country` (country_id, country_name) VALUES (2, 'USA');
+
+INSERT INTO `player` (player_number, first_name, last_name, pos_id, country_id)
+VALUES (17, 'Shohei', 'Ohtani', 1, 1);
+
+INSERT INTO `player` (player_number, first_name, last_name, pos_id, country_id)
+VALUES (50, 'Mookie', 'Betts', 9, 2);
+
+

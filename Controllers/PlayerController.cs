@@ -12,13 +12,13 @@ namespace baseballAPI.Controllers
         public List<Player> GetPlayers()
         {
             // created join query to get foreign table data
-            string connection = "server=localhost;user=root;database=baseball;port=3307;password=password123";
+            string connection = "server=localhost;user=root;database=baseball_db;port=3308;password=password123";
             MySqlConnection mySqlConnection = new MySqlConnection(connection);
             try
             {   
                   List<Player> listOfPlayers = new List<Player>();
                   mySqlConnection.Open();
-                  string get = "SELECT player.PlayerNumber, player.FirstName, player.LastName, position.PositionName, country.CountryName  FROM ((player INNER JOIN position ON  player.PositionId = position.PositionId) INNER JOIN country ON player.CountryId = country.CountryId)";
+                  string get = "SELECT player.player_number, player.first_name, player.last_name, position.pos_name, country.country_name  FROM ((player INNER JOIN position ON  player.pos_id = position.pos_id) INNER JOIN country ON player.country_id = country.country_id)";
                   MySqlCommand cmd = new MySqlCommand(get, mySqlConnection);
                   MySqlDataReader reader = cmd.ExecuteReader();
                   while (reader.Read())
