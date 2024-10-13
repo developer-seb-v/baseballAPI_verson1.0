@@ -100,6 +100,8 @@ INSERT INTO `position` (pos_id, pos_name) VALUES (9, 'right field');
 
 INSERT INTO `country` (country_id, country_name) VALUES (1, 'Japan');
 INSERT INTO `country` (country_id, country_name) VALUES (2, 'USA');
+INSERT INTO `country` (country_id, country_name) VALUES (3, 'Puerto Rico');
+INSERT INTO `country` (country_id, country_name) VALUES (4, 'Dominican Repulican');
 
 INSERT INTO `player` (player_number, first_name, last_name, pos_id, country_id)
 VALUES (17, 'Shohei', 'Ohtani', 1, 1);
@@ -107,4 +109,12 @@ VALUES (17, 'Shohei', 'Ohtani', 1, 1);
 INSERT INTO `player` (player_number, first_name, last_name, pos_id, country_id)
 VALUES (50, 'Mookie', 'Betts', 9, 2);
 
+INSERT INTO `player` (player_number, first_name, last_name, pos_id, country_id)
+VALUES (8, 'Enrique', 'Hernandez', 5, 3);
+
+INSERT INTO `player` (player_number, first_name, last_name, pos_id, country_id)
+VALUES (37, 'Teoscar', 'Hernandez', 7, 4);
+
+INSERT INTO `player` (player_number, first_name, last_name, pos_id, country_id)
+VALUES (50, 'Mookie', 'Betts', 9, 2);
 
