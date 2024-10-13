@@ -1,5 +1,26 @@
 
 
+
+# create volume to persist data  
+docker volume create volume01
+
+# check that the volume is created
+docker volume ls
+
+# docker command to create a MySql container
+docker run \
+--name mysql-baseball \
+-e MYSQL_ROOT_PASSWORD=password123 \
+-p 3308:3306 \
+-v volume01:/var/lib/mysql \
+-d mysql 
+
+how to connect to mysql from mysqlsh 
+switch to sql mode: 
+\sql
+\c localhost -u root -P 3308
+
+
 player table
 +--------------+--------------+------+-----+---------+-------+
 | Field        | Type         | Null | Key | Default | Extra |
@@ -27,6 +48,7 @@ country table
 | CountryId   | int          | NO   | PRI | NULL    | auto_increment |
 | CountryName | varchar(255) | YES  |     | NULL    |                |
 +-------------+--------------+------+-----+---------+----------------+
+
 
 
 # create the database
