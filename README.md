@@ -4,6 +4,8 @@ It also uses Docker for running a MySql container and making calls to the DB.
 
 It utilizes the MySql.Data library to access the container instance.
 
-The project has files that show how to use Docker to persist data 
+The project has files that show how to use Docker to persist data. 
 
-The project was created in Ubuntu Linux 24.04 and shoudl work in Mac OS as well.
+Check out db_resources.txt for table diagrams and some seed data so you can get started with learning docker in a linux terminal. 
+
+The project was created in Ubuntu Linux 24.04 and should work in Mac OS as well.

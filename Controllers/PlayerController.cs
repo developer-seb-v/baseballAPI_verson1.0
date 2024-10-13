@@ -47,7 +47,7 @@ namespace baseballAPI.Controllers
             }
         }
 
-        // http post
+        // http post - Add player using parameters 
         [HttpPost]
         public void AddPlayer(string pnum, string fn, string ln, string posid, string cid)
         {
@@ -72,7 +72,7 @@ namespace baseballAPI.Controllers
             cmd.ExecuteNonQuery();
 
         }
-
+        
         // http delete
     
 
