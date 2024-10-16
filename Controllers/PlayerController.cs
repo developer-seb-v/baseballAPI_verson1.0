@@ -74,7 +74,25 @@ namespace baseballAPI.Controllers
         }
         
         // http delete
-    
+        [HttpDelete]
+        public void DeletePlayer(int id)
+        {
+            string connection = "server=localhost;user=root;database=baseball_db;port=3308;password=password123";
+            MySqlConnection conn = new MySqlConnection(connection);
+
+
+            string query = $" DELETE FROM `player` " +
+            "WHERE player_number = @num";
+
+            MySqlCommand cmd = new MySqlCommand(query, conn);
+            cmd.Parameters.AddWithValue("@num", id);
+           
+
+            cmd.Connection.Open();
+
+
+            cmd.ExecuteNonQuery();
+        }
 
         // http put 
     }
