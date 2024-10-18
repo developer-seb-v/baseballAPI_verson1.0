@@ -22,33 +22,34 @@ switch to sql mode:
 
 
 player table
-+--------------+--------------+------+-----+---------+-------+
-| Field        | Type         | Null | Key | Default | Extra |
-+--------------+--------------+------+-----+---------+-------+
-| PlayerNumber | int          | NO   | PRI | NULL    |       |
-| FirstName    | varchar(255) | YES  |     | NULL    |       |
-| LastName     | varchar(255) | YES  |     | NULL    |       |
-| PositionId   | int          | YES  | MUL | NULL    |       |
-| CountryId    | int          | YES  | MUL | NULL    |       |
-+--------------+--------------+------+-----+---------+-------+
++---------------+--------------+------+-----+---------+-------+
+| Field         | Type         | Null | Key | Default | Extra |
++---------------+--------------+------+-----+---------+-------+
+| player_number | int          | NO   | PRI | NULL    |       |
+| first_name    | varchar(255) | YES  |     | NULL    |       |
+| last_name     | varchar(255) | YES  |     | NULL    |       |
+| pos_id        | int          | YES  | MUL | NULL    |       |
+| country_id    | int          | YES  | MUL | NULL    |       |
++---------------+--------------+------+-----+---------+-------+
+
 
 position table
-+--------------+--------------+------+-----+---------+-------+
-| Field        | Type         | Null | Key | Default | Extra |
-+--------------+--------------+------+-----+---------+-------+
-| PositionId   | int          | NO   | PRI | NULL    |       |
-| PositionName | varchar(255) | YES  |     | NULL    |       |
-+--------------+--------------+------+-----+---------+-------+
++----------+--------------+------+-----+---------+-------+
+| Field    | Type         | Null | Key | Default | Extra |
++----------+--------------+------+-----+---------+-------+
+| pos_id   | int          | NO   | PRI | NULL    |       |
+| pos_name | varchar(255) | YES  |     | NULL    |       |
++----------+--------------+------+-----+---------+-------+
+
 
 
 country table
-+-------------+--------------+------+-----+---------+----------------+
-| Field       | Type         | Null | Key | Default | Extra          |
-+-------------+--------------+------+-----+---------+----------------+
-| CountryId   | int          | NO   | PRI | NULL    | auto_increment |
-| CountryName | varchar(255) | YES  |     | NULL    |                |
-+-------------+--------------+------+-----+---------+----------------+
-
++--------------+--------------+------+-----+---------+-------+
+| Field        | Type         | Null | Key | Default | Extra |
++--------------+--------------+------+-----+---------+-------+
+| country_id   | int          | NO   | PRI | NULL    |       |
+| country_name | varchar(255) | YES  |     | NULL    |       |
++--------------+--------------+------+-----+---------+-------+
 
 
 # create the database
