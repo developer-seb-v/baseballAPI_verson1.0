@@ -95,5 +95,27 @@ namespace baseballAPI.Controllers
         }
 
         // http put 
+        [HttpPut]
+        public void UpdatePlayer(string pnum, string fn, string ln, string posid, string cid)
+        {
+            string connection = "server=localhost;user=root;database=baseball_db;port=3308;password=password123";
+            MySqlConnection conn = new MySqlConnection(connection);
+
+
+            string query = "UPDATE `player` " +
+            "SET first_name = @fn, last_name = @ln, pos_id= @pos, country_id = @cid " +
+            "WHERE player_number = @num";
+
+            MySqlCommand cmd = new MySqlCommand(query, conn);
+            cmd.Parameters.AddWithValue("@fn", fn);
+            cmd.Parameters.AddWithValue("@ln", ln);
+            cmd.Parameters.AddWithValue("@pos", posid);
+            cmd.Parameters.AddWithValue("@cid", cid);
+            cmd.Parameters.AddWithValue("@num", pnum);
+
+            cmd.Connection.Open();
+
+            cmd.ExecuteNonQuery();
+        }
     }
 }
