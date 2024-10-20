@@ -8,4 +8,4 @@ The project has files that show how to use Docker to persist data.
 
 Check out db_resources.txt for table diagrams and some seed data so you can get started with learning docker in a linux terminal. 
 
-The project was created in Ubuntu Linux 24.04/24.10 and should work in Mac OS as well.
+The project was created in Ubuntu Linux 22.04 and should work in Mac OS as well.

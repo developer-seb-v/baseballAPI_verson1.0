@@ -13,7 +13,7 @@ namespace baseballAPI.Controllers
         public List<Player> GetPlayers()
         {
             // created join query to get foreign table data
-            string connection = "server=localhost;user=root;database=baseball_db;port=3308;password=password123";
+            string connection = "server=localhost;user=root;database=baseball;port=3308;password=password123";
             MySqlConnection mySqlConnection = new MySqlConnection(connection);
             try
             {   

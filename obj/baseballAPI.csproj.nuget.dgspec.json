@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/seb/dev/APIs/baseballAPI_verson1.0/baseballAPI.csproj": {}
+    "/home/seb/dev/repository/API/baseballAPI_verson1.0/baseballAPI.csproj": {}
   },
   "projects": {
-    "/home/seb/dev/APIs/baseballAPI_verson1.0/baseballAPI.csproj": {
+    "/home/seb/dev/repository/API/baseballAPI_verson1.0/baseballAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/seb/dev/APIs/baseballAPI_verson1.0/baseballAPI.csproj",
+        "projectUniqueName": "/home/seb/dev/repository/API/baseballAPI_verson1.0/baseballAPI.csproj",
         "projectName": "baseballAPI",
-        "projectPath": "/home/seb/dev/APIs/baseballAPI_verson1.0/baseballAPI.csproj",
+        "projectPath": "/home/seb/dev/repository/API/baseballAPI_verson1.0/baseballAPI.csproj",
         "packagesPath": "/home/seb/.nuget/packages/",
-        "outputPath": "/home/seb/dev/APIs/baseballAPI_verson1.0/obj/",
+        "outputPath": "/home/seb/dev/repository/API/baseballAPI_verson1.0/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/seb/.nuget/NuGet/NuGet.Config"

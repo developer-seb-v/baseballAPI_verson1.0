@@ -53,10 +53,10 @@ country table
 
 
 # create the database
-CREATE SCHEMA baseball_db;
+CREATE SCHEMA baseball;
 
 # switch to the database you just created
-USE baseball_db;
+USE baseball;
 
 # create the tables
 
