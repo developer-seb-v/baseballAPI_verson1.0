@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("baseballAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a0f7af1608ce8a3aa6f1b55df6109c3edafa5246")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+990642e49e59ace5f4134464ddd722e61c3cc85e")]
 [assembly: System.Reflection.AssemblyProductAttribute("baseballAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("baseballAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

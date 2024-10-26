@@ -9,13 +9,14 @@ namespace baseballAPI.Controllers
     [Route("api/[controller]")]
     public class PlayerController : ControllerBase
     {
+        private readonly string _connection = "server=localhost;user=root;database=baseball_db;port=3308;password=password123";
+        
         [HttpGet]
         public List<Player> GetPlayers()
         {
             // created join query to get foreign table data
-            string connection =
-                "server=localhost;user=root;database=baseball;port=3308;password=password123";
-            MySqlConnection mySqlConnection = new MySqlConnection(connection);
+            
+            MySqlConnection mySqlConnection = new MySqlConnection(_connection);
             try
             {
                 List<Player> listOfPlayers = new List<Player>();
@@ -55,9 +56,8 @@ namespace baseballAPI.Controllers
         {
             try
             {
-                string connection =
-                    "server=localhost;user=root;database=baseball_db;port=3308;password=password123";
-                MySqlConnection conn = new MySqlConnection(connection);
+        
+                MySqlConnection conn = new MySqlConnection(_connection);
 
                 string query =
                     $"INSERT INTO `player` "
@@ -83,11 +83,10 @@ namespace baseballAPI.Controllers
 
         // http delete
         [HttpDelete]
-        public void DeletePlayer(int id)
+        public int DeletePlayer(int id)
         {
-            string connection =
-                "server=localhost;user=root;database=baseball_db;port=3308;password=password123";
-            MySqlConnection conn = new MySqlConnection(connection);
+           
+            MySqlConnection conn = new MySqlConnection(_connection);
 
             string query = $" DELETE FROM `player` " + "WHERE player_number = @num";
 
@@ -97,15 +96,17 @@ namespace baseballAPI.Controllers
             cmd.Connection.Open();
 
             cmd.ExecuteNonQuery();
+
+            return id;
         }
 
         // http put
+        // not sure how to implement this one, which values to update
         [HttpPut]
         public void UpdatePlayer(string pnum, string fn, string ln, string posid, string cid)
         {
-            string connection =
-                "server=localhost;user=root;database=baseball_db;port=3308;password=password123";
-            MySqlConnection conn = new MySqlConnection(connection);
+           
+            MySqlConnection conn = new MySqlConnection(_connection);
 
             string query =
                 "UPDATE `player` "

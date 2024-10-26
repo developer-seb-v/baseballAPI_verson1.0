@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/home/seb/dev/repository/API/baseballAPI_verson1.0/baseballAPI.csproj": {}
+    "/Users/sebval/RiderProjects/baseballAPI_verson1.0/baseballAPI.csproj": {}
   },
   "projects": {
-    "/home/seb/dev/repository/API/baseballAPI_verson1.0/baseballAPI.csproj": {
+    "/Users/sebval/RiderProjects/baseballAPI_verson1.0/baseballAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/seb/dev/repository/API/baseballAPI_verson1.0/baseballAPI.csproj",
+        "projectUniqueName": "/Users/sebval/RiderProjects/baseballAPI_verson1.0/baseballAPI.csproj",
         "projectName": "baseballAPI",
-        "projectPath": "/home/seb/dev/repository/API/baseballAPI_verson1.0/baseballAPI.csproj",
-        "packagesPath": "/home/seb/.nuget/packages/",
-        "outputPath": "/home/seb/dev/repository/API/baseballAPI_verson1.0/obj/",
+        "projectPath": "/Users/sebval/RiderProjects/baseballAPI_verson1.0/baseballAPI.csproj",
+        "packagesPath": "/Users/sebval/.nuget/packages/",
+        "outputPath": "/Users/sebval/RiderProjects/baseballAPI_verson1.0/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/seb/.nuget/NuGet/NuGet.Config"
+          "/Users/sebval/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -32,6 +32,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -78,7 +83,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.110/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.301/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
