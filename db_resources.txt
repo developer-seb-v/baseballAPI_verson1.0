@@ -15,11 +15,11 @@ docker run \
 -v volume01:/var/lib/mysql \
 -d mysql 
 
-how to connect to mysql from mysqlsh 
-switch to sql mode: 
-\sql
-\c localhost -u root -P 3308
+connect to MySql in Docker desktop by going to container and under Actions => ... press
+three dots and choose "Open in Terminal"
 
+enter the following command: mysql -u root -p
+enter password: password123
 
 player table
 +---------------+--------------+------+-----+---------+-------+
