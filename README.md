@@ -9,4 +9,4 @@ It utilizes the MySql.Data library to access the container instance.
 
 Check out db_resources.txt for table diagrams and some seed data so you can get started with learning docker in a unix terminal. 
 
-The project was created in Ubuntu Linux 22.04 and Mac OS.
+The project was created in Ubuntu Linux 22.04/24.04 and Mac OS.
