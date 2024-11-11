@@ -4,8 +4,8 @@ It uses Docker for running MySql and PostgreSQL containers. The baseball tables 
 and PostgreSQL container is used for authentication using Asp.Net Core Identity library. This uses entity framework
 with PostgreSQL.
 
-It utilizes the MySql.Data library to access the container instance and EF for using Asp.Net core Idenity
-library with postgreSQL. 
+
+It utilizes the MySql.Data library to access the container instance.
 
 Check out db_resources.txt for table diagrams and some seed data so you can get started with learning docker in a unix terminal. 
 
