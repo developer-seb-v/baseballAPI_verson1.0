@@ -117,5 +117,9 @@ INSERT INTO `player` (player_number, first_name, last_name, pos_id, country_id)
 VALUES (37, 'Teoscar', 'Hernandez', 7, 4);
 
 INSERT INTO `player` (player_number, first_name, last_name, pos_id, country_id)
-VALUES (50, 'Mookie', 'Betts', 9, 2);
+VALUES (7, 'Blake', 'Snell', 1, 2);
+
+INSERT INTO `player` (player_number, first_name, last_name, pos_id, country_id)
+VALUES (25, 'Tommy', 'Edman', 4, 2);
+
 
