@@ -8,7 +8,7 @@ namespace baseballAPI.Controllers
     [Route("api/[controller]")]
     public class PlayerController : ControllerBase
     {
-        private readonly string _connection = "server=localhost;user=root;database=baseball_db;port=3308;password=password123";
+        private readonly string _connection = "server=localhost;user=root;database=baseball;port=3308;password=password123";
         
         [HttpGet]
         public List<Player> GetPlayers()
