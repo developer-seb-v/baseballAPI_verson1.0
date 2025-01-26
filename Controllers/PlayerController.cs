@@ -1,4 +1,5 @@
 using baseballAPI.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MySql.Data.MySqlClient;
 
@@ -10,6 +11,7 @@ namespace baseballAPI.Controllers
     {
         private readonly string _connection = "server=localhost;user=root;database=baseball;port=3308;password=password123";
         
+        [Authorize]
         [HttpGet]
         public List<Player> GetPlayers()
         {

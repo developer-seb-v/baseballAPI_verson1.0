@@ -6,5 +6,8 @@ docker run --name postgres -e POSTGRES_PASSWORD=password123 \
 
 this creates a postgreSQL container with the name "postgres",
 password=password123, specifies the port "5432", mounts the volume
-for data persistence and finally specifies which image you're pulling
+for data persistence and finally, specifies which image you're pulling
 "postgres"
+
+You will still need to run " dotnet ef migrations add Initial" and "dotnet ef database update"
+to populate the postgres DB with the Identity library provided tables for authentication. 
