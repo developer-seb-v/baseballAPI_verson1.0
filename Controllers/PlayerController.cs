@@ -9,21 +9,21 @@ namespace baseballAPI.Controllers
     [Route("api/[controller]")]
     public class PlayerController : ControllerBase
     {
-        private readonly string _connection = "server=localhost;user=root;database=baseball;port=3308;password=password123";
-        
-        [Authorize]
+        private readonly string _connection =
+            "server=localhost;user=root;database=baseball;port=3308;password=password123";
+
+       // [Authorize]
         [HttpGet]
         public List<Player> GetPlayers()
         {
-           
-            
             MySqlConnection mySqlConnection = new MySqlConnection(_connection);
             try
             {
                 List<Player> listOfPlayers = new List<Player>();
                 mySqlConnection.Open();
                 // created join query to get foreign table data
-                string get = "SELECT player.player_number, player.first_name, player.last_name, position.pos_name, country.country_name  FROM ((player INNER JOIN position ON  player.pos_id = position.pos_id) INNER JOIN country ON player.country_id = country.country_id)";
+                string get =
+                    "SELECT player.player_number, player.first_name, player.last_name, position.pos_name, country.country_name  FROM ((player INNER JOIN position ON  player.pos_id = position.pos_id) INNER JOIN country ON player.country_id = country.country_id)";
                 MySqlCommand cmd = new MySqlCommand(get, mySqlConnection);
                 MySqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
@@ -40,7 +40,7 @@ namespace baseballAPI.Controllers
                         FirstName = reader.GetValue(1).ToString(),
                         LastName = reader.GetValue(2).ToString(),
                         Position = reader.GetValue(3).ToString(),
-                        Country = reader.GetValue(4).ToString()
+                        Country = reader.GetValue(4).ToString(),
                     };
                     listOfPlayers.Add(p);
                 }
@@ -59,7 +59,6 @@ namespace baseballAPI.Controllers
         {
             try
             {
-        
                 MySqlConnection conn = new MySqlConnection(_connection);
 
                 string query =
@@ -88,7 +87,6 @@ namespace baseballAPI.Controllers
         [HttpDelete]
         public int DeletePlayer(int id)
         {
-           
             MySqlConnection conn = new MySqlConnection(_connection);
 
             string query = $" DELETE FROM `player` " + "WHERE player_number = @num";
@@ -108,7 +106,6 @@ namespace baseballAPI.Controllers
         [HttpPut]
         public void UpdatePlayer(string pnum, string fn, string ln, string posid, string cid)
         {
-           
             MySqlConnection conn = new MySqlConnection(_connection);
 
             string query =

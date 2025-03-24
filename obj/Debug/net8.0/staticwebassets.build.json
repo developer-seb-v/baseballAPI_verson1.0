@@ -1,11 +1,12 @@
 {
   "Version": 1,
-  "Hash": "Ls5nCApZfRoPJMN7kQj9Gk74eD/TFhMxDYTEu2s6/Tc=",
+  "Hash": "KieAv67QTNQS+wZVp+izxMDBPpyBh+WiM9F7LnCLHpw=",
   "Source": "baseballAPI",
   "BasePath": "_content/baseballAPI",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
   "DiscoveryPatterns": [],
-  "Assets": []
+  "Assets": [],
+  "Endpoints": []
 }
