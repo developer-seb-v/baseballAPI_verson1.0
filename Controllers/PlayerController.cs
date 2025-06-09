@@ -12,7 +12,7 @@ namespace baseballAPI.Controllers
         private readonly string _connection =
             "server=localhost;user=root;database=baseball;port=3308;password=password123";
 
-       // [Authorize]
+       // [Authorize] if you want to protect this endpoint from unauthorized users uncomment this attribute
         [HttpGet]
         public List<Player> GetPlayers()
         {
@@ -54,38 +54,51 @@ namespace baseballAPI.Controllers
         }
 
         // http post - Add player using parameters
-        [HttpPost]
-        public void AddPlayer(string pnum, string fn, string ln, string posid, string cid)
+      
+        [AllowAnonymous]
+        [HttpPost ("addplayerobject")]
+        public async Task<IActionResult> AddPlayerObject([FromBody] Player player)
         {
             try
             {
                 MySqlConnection conn = new MySqlConnection(_connection);
-
+                
                 string query =
                     $"INSERT INTO `player` "
                     + "(player_number, first_name, last_name, pos_id, country_id)"
                     + "VALUES (@num, @fn, @ln, @pos, @cid)";
 
                 MySqlCommand cmd = new MySqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@num", pnum);
-                cmd.Parameters.AddWithValue("@fn", fn);
-                cmd.Parameters.AddWithValue("@ln", ln);
-                cmd.Parameters.AddWithValue("@pos", posid);
-                cmd.Parameters.AddWithValue("@cid", cid);
+                cmd.Parameters.AddWithValue("@num", player.PlayerNumber);
+                cmd.Parameters.AddWithValue("@fn", player.FirstName);
+                cmd.Parameters.AddWithValue("@ln", player.LastName);
+                cmd.Parameters.AddWithValue("@pos", player.Position);
+                cmd.Parameters.AddWithValue("@cid", player.Country);
 
-                cmd.Connection.Open();
-
+                //cmd.Connection.Open();
+                await cmd.Connection.OpenAsync();
                 cmd.ExecuteNonQuery();
             }
             catch (SystemException ex)
             {
                 Console.WriteLine(ex);
             }
+
+            return Ok(player);
+            // int rowsAffected = await cmd.ExecuteNonQueryAsync();
+            //
+            // if (rowsAffected > 0)
+            // {
+            //     return Ok("Customer inserted successfully.");
+            // }
+            //
+            // return StatusCode(500, "An error occurred while inserting the customer.");
+
         }
 
         // http delete
-        [HttpDelete]
-        public int DeletePlayer(int id)
+        [HttpDelete ("{id}")]
+        public ActionResult DeletePlayer(int id)
         {
             MySqlConnection conn = new MySqlConnection(_connection);
 
@@ -98,7 +111,7 @@ namespace baseballAPI.Controllers
 
             cmd.ExecuteNonQuery();
 
-            return id;
+            return Ok(id);
         }
 
         // http put
