@@ -4529,19 +4529,19 @@
     ]
   },
   "packageFolders": {
-    "/Users/seb/.nuget/packages/": {}
+    "C:\\Users\\devel\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/seb/RiderProjects/baseballAPI_verson1.0/baseballAPI.csproj",
+      "projectUniqueName": "C:\\Users\\devel\\dev\\baseballAPI_verson1.0\\baseballAPI.csproj",
       "projectName": "baseballAPI",
-      "projectPath": "/Users/seb/RiderProjects/baseballAPI_verson1.0/baseballAPI.csproj",
-      "packagesPath": "/Users/seb/.nuget/packages/",
-      "outputPath": "/Users/seb/RiderProjects/baseballAPI_verson1.0/obj/",
+      "projectPath": "C:\\Users\\devel\\dev\\baseballAPI_verson1.0\\baseballAPI.csproj",
+      "packagesPath": "C:\\Users\\devel\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\devel\\dev\\baseballAPI_verson1.0\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/seb/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\devel\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -4619,20 +4619,6 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[8.0.13, 8.0.13]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Host.osx-arm64",
-            "version": "[8.0.13, 8.0.13]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Ref",
-            "version": "[8.0.13, 8.0.13]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
@@ -4641,7 +4627,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/Users/seb/.dotnet/sdk/9.0.200/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.202/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

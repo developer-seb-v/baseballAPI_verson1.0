@@ -161,6 +161,39 @@ namespace baseballAPI.Controllers
             throw;
         }
     }
+    
+    [AllowAnonymous]
+    [HttpPost("addcountry")]
+    public async Task<IActionResult> AddCountry([FromBody] Country country)
+    {
+        try
+        {
+            MySqlConnection conn = new MySqlConnection(_connection);
+            string query = $"INSERT INTO `country` " + "(country_id, country_name)" +
+                           "VALUES (@id, @name)";
+            MySqlCommand cmd = new MySqlCommand(query, conn);
+            cmd.Parameters.AddWithValue("@id", country.CountryId);
+            cmd.Parameters.AddWithValue("@name", country.CountryName);
+
+            //cmd.Connection.Open();
+            await cmd.Connection.OpenAsync();
+            cmd.ExecuteNonQuery();
+        }
+        catch (SystemException ex)
+        {
+            Console.WriteLine(ex);
+        }
+
+        return Ok(country);
+        // int rowsAffected = await cmd.ExecuteNonQueryAsync();
+        //
+        // if (rowsAffected > 0)
+        // {
+        //     return Ok("Customer inserted successfully.");
+        // }
+        //
+        // return StatusCode(500, "An error occurred while inserting the customer.");
+    }
 
 }
 
