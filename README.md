@@ -12,3 +12,15 @@ It utilizes the MySql.Data library to access the container instance, create tabl
 Check out db_resources.txt for table diagrams and some seed data so you can get started with learning docker in a terminal. 
 
 The project was created in Ubuntu Linux 22.04/24.04 and Mac OS. Should work fine using Windows as well. I've been able to replicate it in VS code and Rider IDEs. 
+
+<bold>INSTRUCTIONS FOR USE</bold>
+
+You need to install: Docker, dotnet 8 SDK, and IDE of choice (vs code, Rider, etc.)
+
+<p>Follow instructions in <a href="https://github.com/developer-seb-v/baseballAPI_verson1.0/blob/main/db_resources.txt">HERE</a> to create the necessary Docker volume for data persistence and containers for running your MySQL queries, etc. </p>
+<br>
+<p>
+  If you want to add Authentication/Authorization, then follow the instructions <a href="https://github.com/developer-seb-v/baseballAPI_verson1.0/blob/main/db_resources_postgreSQL">HERE</a> to get the PostgreSQL container running for ASP DOT NET CORE Identity. 
+
+  
+</p>
