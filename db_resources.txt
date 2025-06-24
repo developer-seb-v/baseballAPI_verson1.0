@@ -60,24 +60,29 @@ USE baseball;
 
 # create the tables
 
-CREATE TABLE `position`(pos_id int, pos_name varchar(255));
+CREATE TABLE position (
+     pos_id int,
+     pos_name varchar(255),
+     PRIMARY KEY (pos_id)
+     );
 
-# add primary key for position table
-ALTER TABLE `position` ADD PRIMARY KEY (pos_id);
 
-CREATE TABLE `country` (country_id int, country_name varchar(255));
+CREATE TABLE country (
+     country_id int NOT NULL AUTO_INCREMENT,
+     country_name varchar(255),
+     PRIMARY KEY (country_id)
+     );
 
-ALTER TABLE `country` ADD PRIMARY KEY (country_id);
 
-# add auto increment constraint
+CREATE TABLE player (
+     player_number int NOT NULL,
+     first_name varchar(255),
+     last_name varchar(255),
+     PRIMARY KEY (player_number)
+     );
 
-ALTER TABLE `country` AUTO_INCREMENT=1;
 
-CREATE TABLE `player` (player_number int, first_name varchar(255), last_name varchar(255));
-
-ALTER TABLE `player` ADD PRIMARY KEY (player_number);
-
-# add foreign key columns in the player table
+# add FK columns in the player table
 
 ALTER TABLE `player`  ADD pos_id int;
 
@@ -99,10 +104,10 @@ INSERT INTO `position` (pos_id, pos_name) VALUES (7, 'left field');
 INSERT INTO `position` (pos_id, pos_name) VALUES (8, 'center field');
 INSERT INTO `position` (pos_id, pos_name) VALUES (9, 'right field');
 
-INSERT INTO `country` (country_id, country_name) VALUES (1, 'Japan');
-INSERT INTO `country` (country_id, country_name) VALUES (2, 'USA');
-INSERT INTO `country` (country_id, country_name) VALUES (3, 'Puerto Rico');
-INSERT INTO `country` (country_id, country_name) VALUES (4, 'Dominican Repulican');
+INSERT INTO `country` (country_name) VALUES ( 'Japan');
+INSERT INTO `country` (country_name) VALUES ( 'USA');
+INSERT INTO `country` (country_name) VALUES ( 'Puerto Rico');
+INSERT INTO `country` (country_name) VALUES ( 'Dominican Repulican');
 
 INSERT INTO `player` (player_number, first_name, last_name, pos_id, country_id)
 VALUES (17, 'Shohei', 'Ohtani', 1, 1);
@@ -121,5 +126,3 @@ VALUES (7, 'Blake', 'Snell', 1, 2);
 
 INSERT INTO `player` (player_number, first_name, last_name, pos_id, country_id)
 VALUES (25, 'Tommy', 'Edman', 4, 2);
-
-
