@@ -11,9 +11,13 @@ docker volume ls
 docker run \
 --name mysql-baseball \
 -e MYSQL_ROOT_PASSWORD=password123 \
+-e MYSQL_INITDB_SKIP_TZINFO=true \
 -p 3308:3306 \
 -v volume01:/var/lib/mysql \
 -d mysql 
+
+- a note about line 14 - that command is to allow insert commands without 
+- having to specify the id when adding countries
 
 connect to MySql in Docker desktop by going to container and under Actions => ... press
 three dots and choose "Open in Terminal"
