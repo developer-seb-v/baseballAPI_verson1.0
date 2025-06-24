@@ -169,10 +169,9 @@ namespace baseballAPI.Controllers
         try
         {
             MySqlConnection conn = new MySqlConnection(_connection);
-            string query = $"INSERT INTO `country` " + "(country_id, country_name)" +
-                           "VALUES (@id, @name)";
+            string query = $"INSERT INTO `country` " + "(country_name)" +
+                           "VALUES (@name)";
             MySqlCommand cmd = new MySqlCommand(query, conn);
-            cmd.Parameters.AddWithValue("@id", country.CountryId);
             cmd.Parameters.AddWithValue("@name", country.CountryName);
 
             //cmd.Connection.Open();
