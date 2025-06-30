@@ -22,6 +22,9 @@ docker run \
 connect to MySql in Docker desktop by going to container and under Actions => ... press
 three dots and choose "Open in Terminal"
 
+- if using terminal you can use the following command to access interactive terminal within MySQL container: 
+docker exec -it mysql-baseball bash
+
 enter the following command: mysql -u root -p
 enter password: password123
 
