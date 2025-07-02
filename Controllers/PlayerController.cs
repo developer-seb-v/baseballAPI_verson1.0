@@ -107,26 +107,77 @@ namespace baseballAPI.Controllers
             return Ok(id);
         }
 
-        // http put
-        // not sure how to implement this one, which values to update
-        [HttpPut]
-        public void UpdatePlayer(string pnum, string fn, string ln, string posid, string cid)
-        {
-            MySqlConnection conn = new MySqlConnection(_connection);
-            string query =
-                "UPDATE `player` "
-                + "SET first_name = @fn, last_name = @ln, pos_id= @pos, country_id = @cid "
-                + "WHERE player_number = @num";
-            MySqlCommand cmd = new MySqlCommand(query, conn);
-            cmd.Parameters.AddWithValue("@fn", fn);
-            cmd.Parameters.AddWithValue("@ln", ln);
-            cmd.Parameters.AddWithValue("@pos", posid);
-            cmd.Parameters.AddWithValue("@cid", cid);
-            cmd.Parameters.AddWithValue("@num", pnum);
-            cmd.Connection.Open();
-            cmd.ExecuteNonQuery();
-        }
+        // // http put
+        // // not sure how to implement this one, which values to update
+        // [HttpPut]
+        // public void UpdatePlayer(Player player)
+        // {
+        //     MySqlConnection conn = new MySqlConnection(_connection);
+        //     string query =
+        //         "UPDATE `player` "
+        //         + "SET first_name = @fn, last_name = @ln, pos_id= @pos, country_id = @cid "
+        //         + "WHERE player_number = @num";
+        //     MySqlCommand cmd = new MySqlCommand(query, conn);
+        //     cmd.Parameters.AddWithValue("@fn", player.FirstName);
+        //     cmd.Parameters.AddWithValue("@ln", player.LastName);
+        //     cmd.Parameters.AddWithValue("@pos", player.Position);
+        //     cmd.Parameters.AddWithValue("@cid", player.Country);
+        //     cmd.Parameters.AddWithValue("@num", player.PlayerNumber);
+        //     cmd.Connection.Open();
+        //     cmd.ExecuteNonQuery();
+        // }
 
+        [HttpPut("{playerNumber}")]
+        public ActionResult UpdatePlayer(int playerNumber, [FromBody] Player player)
+        {
+            // Validate the request: Ensure playerNumber matches the player's PlayerNumber
+            if (playerNumber != player.PlayerNumber)
+            {
+                return BadRequest("Player number in URL does not match the player number in the body.");
+            }
+
+            // SQL UPDATE query
+            string query = @"
+            UPDATE player
+            SET first_name = @FirstName, last_name = @LastName, pos_id = @Position, country_id = @Country
+            WHERE player_number = @PlayerNumber";
+
+            // Create MySQL connection
+            using (MySqlConnection conn = new MySqlConnection(_connection))
+            {
+                try
+                {
+                    conn.Open();
+
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        // Add parameters to prevent SQL injection
+                        cmd.Parameters.AddWithValue("@FirstName", player.FirstName);
+                        cmd.Parameters.AddWithValue("@LastName", player.LastName);
+                        cmd.Parameters.AddWithValue("@Position", player.Position);
+                        cmd.Parameters.AddWithValue("@Country", player.Country);
+                        cmd.Parameters.AddWithValue("@PlayerNumber", player.PlayerNumber);
+
+                        // Execute the query
+                        int rowsAffected = cmd.ExecuteNonQuery();
+
+                        // If no rows were affected, the player was not found
+                        if (rowsAffected == 0)
+                        {
+                            return NotFound("Player not found.");
+                        }
+
+                        // Return 200 OK if the update is successful
+                        return Ok("Player updated successfully.");
+                    }
+                }
+                catch (MySqlException ex)
+                {
+                    // Handle exceptions and return internal server error
+                    return StatusCode(500, $"Error updating player: {ex.Message}");
+                }
+            }
+        }
 
     }
 }
