@@ -96,7 +96,7 @@ namespace baseballAPI.Controllers
         }
 
         [AllowAnonymous]
-        [HttpPost("addplayerobject")]
+        [HttpPost("add")]
         public async Task<IActionResult> AddPlayerObject([FromBody] Player player)
         {
             try
