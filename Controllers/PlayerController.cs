@@ -1,7 +1,10 @@
+using System.ComponentModel;
 using baseballAPI.Models;
+using baseballAPI.DTOs;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MySql.Data.MySqlClient;
+using Mysqlx;
 
 namespace baseballAPI.Controllers
 {
@@ -53,9 +56,45 @@ namespace baseballAPI.Controllers
             }
         }
 
-        // TODO need to add validation for identical player_numbers 
+       
+            [HttpGet("{id}")]
+        public async Task<ActionResult<PlayerDTO>> GetProduct(int id)
+        {
+            PlayerDTO player = new PlayerDTO();
 
-        // http post - Add player using parameters
+            using (MySqlConnection connection = new MySqlConnection(_connection))
+            {
+                await connection.OpenAsync();
+                string query = "SELECT player.first_name, player.last_name, position.pos_name, country.country_name  FROM ((player INNER JOIN position ON  player.pos_id = position.pos_id) INNER JOIN country ON player.country_id = country.country_id) WHERE player_number =  @Id";
+                using (MySqlCommand command = new MySqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@Id", id);
+                    using (MySqlDataReader reader = (MySqlDataReader)await command.ExecuteReaderAsync())
+                    {
+                        if (await reader.ReadAsync())
+                        {
+                            player = new PlayerDTO
+                            {
+
+                                FirstName = reader["first_name"].ToString(),
+                                LastName = reader["last_name"].ToString(),
+                                Position = reader["pos_name"].ToString(),
+                                Country = reader["country_name"].ToString()
+
+                            };
+                        }
+                    }
+                }
+            }
+
+            if (player == null)
+            {
+                return NotFound();
+            }
+
+            return player;
+        }
+
         [AllowAnonymous]
         [HttpPost("addplayerobject")]
         public async Task<IActionResult> AddPlayerObject([FromBody] Player player)
